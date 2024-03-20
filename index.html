@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/app.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav">
+        <div class="container_one">
+          <div class="logo">Netflix</div>
+          <div class="navigation">
+            <a href="#">Movie</a><a href="#">Movie</a><a href="#">Movie</a>
+          </div>
+        </div>
+        <div class="container_two">
+          <div class="recherche">
+            <form action="">
+              <button type="submit">
+                <img src="./assets/search.svg" alt="" />
+              </button>
+              <input
+                type="text"
+                name="recherche"
+                id="recherche"
+                placeholder="search"
+              />
+            </form>
+          </div>
+          <div class="profil">
+            <div class="img">
+              <img src="./assets/girl_signa.png" alt="" />
+            </div>
+
+            <div class="name_profil">
+              <p>Fares</p>
+              <p>Kerkeni</p>
+            </div>
+            <div class="fleche">
+              <img src="./assets/Group_7.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="avant">
+        <div class="avant_first"><img src="./assets/serie.jpg" alt="" /></div>
+        <div class="avant_second"><img src="./assets/serie.jpg" alt="" /></div>
+      </div>
+      <div class="container_catego_button">
+        <div id="back"><img src="./assets/left.svg" alt="" /></div>
+        <div id="next"><img src="./assets/right.svg" alt="" /></div>
+
+        <div class="categories">
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+          <div class="categorie"><p>Action</p></div>
+
+          <!-- Autres éléments .categorie -->
+        </div>
+      </div>
+
+      <div class="container_series">
+        <div class="back_serie"><img src="./assets/left.svg" alt="" /></div>
+        <div class="next_serie"><img src="./assets/right.svg" alt="" /></div>
+        <div class="series">
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+        </div>
+      </div>
+      <div class="container_series">
+        <div class="back_serie"><img src="./assets/left.svg" alt="" /></div>
+        <div class="next_serie"><img src="./assets/right.svg" alt="" /></div>
+        <div class="series">
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+        </div>
+      </div>
+      <div class="container_series">
+        <div class="back_serie"><img src="./assets/left.svg" alt="" /></div>
+        <div class="next_serie"><img src="./assets/right.svg" alt="" /></div>
+        <div class="series">
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+          <img src="./assets/serie.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let scrollContainer = document.querySelector(".categories");
+        let back = document.querySelector("#back");
+        let next = document.querySelector("#next");
+
+        scrollContainer.addEventListener("wheel", (evt) => {
+          evt.preventDefault();
+          scrollContainer.scrollLeft += evt.deltaY;
+        });
+
+        back.addEventListener("click", () => {
+          scrollContainer.scrollLeft -= 100;
+        });
+
+        next.addEventListener("click", () => {
+          scrollContainer.scrollLeft += 100;
+        });
+
+        let seriesContainers = document.querySelectorAll(".container_series");
+
+        seriesContainers.forEach(function (container) {
+          let series = container.querySelector(".series");
+          let backSerie = container.querySelector(".back_serie");
+          let nextSerie = container.querySelector(".next_serie");
+
+          series.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            series.scrollLeft += evt.deltaY;
+          });
+
+          backSerie.addEventListener("click", () => {
+            series.scrollLeft -= 100;
+          });
+
+          nextSerie.addEventListener("click", () => {
+            series.scrollLeft += 100;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
