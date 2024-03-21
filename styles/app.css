@@ -73,6 +73,7 @@ input:focus {
   border-radius: 50%;
   overflow: hidden;
   margin-right: 10px;
+  border: solid 2px white;
 }
 .profil img {
   width: 100%;
@@ -228,7 +229,6 @@ input:focus {
   width: 100%;
   display: flex;
 
-  margin-bottom: 50px;
   font-size: 36px;
 }
 
@@ -294,6 +294,7 @@ input:focus {
   background-color: none;
   background-color: #000000;
   display: none;
+  border-radius: 0 0 15px 15px;
 }
 .content_img:hover .content {
   display: flex !important;
@@ -348,11 +349,16 @@ input:focus {
   color: white;
   background-color: rgba(255, 255, 255, 0.148);
 }
-
+.back_serie:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 .next_serie {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
   color: white;
   background-color: rgba(255, 255, 255, 0.148);
+}
+.next_serie:hover {
+  background-color: rgba(255, 255, 255, 0.5);
 }
