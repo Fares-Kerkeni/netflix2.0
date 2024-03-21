@@ -11,6 +11,54 @@ body {
   padding: 0 25px;
   overflow-y: scroll; /* Ajout de overflow-y pour permettre le défilement vertical */
   color: white;
+  position: relative;
+}
+.div_more {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center !important;
+
+  align-items: center !important;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.644);
+  z-index: 100000000000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.center {
+  width: 60%;
+  height: 100%;
+  background-color: #b3b0be;
+  position: relative;
+  color: rgb(255, 255, 255);
+  margin-top: 35px;
+  border-radius: 15px;
+  overflow-y: auto;
+}
+.center::-webkit-scrollbar {
+  width: 0;
+}
+.center .img_couverture {
+  width: 100%;
+  height: 500px;
+  object-fit: cover !important;
+
+  border-radius: 15px 15px 0 0;
+}
+.center .img_couverture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  border-radius: 15px 15px 0 0;
+}
+.center button {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 30px;
+  color: white;
 }
 .container::-webkit-scrollbar {
   width: 0;
@@ -63,10 +111,30 @@ input:focus {
   margin-right: 10px;
 }
 
-.profil {
+.nav .profil {
   display: flex;
   align-items: center;
+
+  position: relative;
 }
+.nav .profil .popup_profil {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background-color: white;
+  width: 200px;
+  height: 300px;
+  border-radius: 15px;
+  z-index: 100;
+}
+.profil:hover .popup_profil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .profil .img {
   width: 53px;
   height: 53px;
@@ -280,7 +348,7 @@ input:focus {
 .content_img:hover {
   height: 400px !important;
 }
-.container_series .series .content_img img {
+.container_series .series .content_img .img_hover {
   width: 214px;
   height: 300px;
   object-fit: cover;
@@ -295,10 +363,20 @@ input:focus {
   background-color: #000000;
   display: none;
   border-radius: 0 0 15px 15px;
+  color: white;
+  padding: 0 25px;
+}
+.container_series .series .content_img .content img {
+  height: 25px !important;
+  width: 25px !important;
+  margin-right: 10px !important;
 }
 .content_img:hover .content {
   display: flex !important;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .content_img:hover {
   height: 300px;
 }
