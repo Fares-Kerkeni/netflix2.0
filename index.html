@@ -57,17 +57,17 @@
           </div>
           <div class="container_change_saison">
             <div class="saison">
-              <div class="button">
+              <p>Saison 1</p>
+              <div class="button_saison">
                 <p>Saison 1</p>
                 <img src="./assets/Group_7.svg" alt="" />
-              </div>
-
-              <div class="all_saison">
-                <p>Saison 1</p>
-                <p>Saison 2</p>
-                <p>Saison 3</p>
-                <p>Saison 4</p>
-                <p>Saison 5</p>
+                <div class="all_saison">
+                  <p>Saison 1</p>
+                  <p>Saison 2</p>
+                  <p>Saison 3</p>
+                  <p>Saison 4</p>
+                  <p>Saison 5</p>
+                </div>
               </div>
             </div>
           </div>
@@ -534,6 +534,23 @@
         closePopup.addEventListener("click", () => {
           popup.style.display = "none";
           document.body.style.overflow = "auto"; // Réactiver le défilement lorsque la popup est fermée
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        let popupButton = document.querySelector(".button_saison");
+        let popup = document.querySelector(".all_saison");
+
+        popupButton.addEventListener("click", () => {
+          // Vérifie si la popup est actuellement affichée ou non
+          if (popup.style.display === "none" || popup.style.display === "") {
+            // Si la popup est cachée, l'affiche
+            popup.style.display = "flex";
+            document.body.style.overflow = "hidden"; // Empêcher le défilement lorsque la popup est ouverte
+          } else {
+            // Si la popup est visible, la cache
+            popup.style.display = "none";
+            document.body.style.overflow = "auto"; // Réactiver le défilement lorsque la popup est fermée
+          }
         });
       });
     </script>
