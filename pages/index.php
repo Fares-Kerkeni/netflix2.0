@@ -1,10 +1,27 @@
+<?php
+require_once "../include/bdd.php";
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+// Préparation de la requête pour récupérer toutes les catégories
+$requete_all_categories = $bdd->query("SELECT * FROM categories");
+
+// Vérifier si des catégories existent
+
+
+// Fermer la requête
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./styles/app.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/app.css" />
     <title>Document</title>
   </head>
   <body>
@@ -12,18 +29,18 @@
       <div class="div_more">
         <div class="center">
           <button id="close_popup">
-            <img src="./assets/x.svg" alt="" />
+            <img src="../assets/x.svg" alt="" />
           </button>
           <div class="img_couverture">
-            <img src="./assets/serie.jpg" alt="" />
+            <img src="../assets/serie.jpg" alt="" />
             <div class="container_play">
               <a href="" class="play">
-                <img src="./assets/play_black.svg" alt="" />
+                <img src="../assets/play_black.svg" alt="" />
                 <p>Play</p>
               </a>
               <div class="containerimg">
-                <img src="./assets/thumbs-up.svg" alt="" />
-                <img src="./assets/circle-plus.svg" alt="" />
+                <img src="../assets/thumbs-up.svg" alt="" />
+                <img src="../assets/circle-plus.svg" alt="" />
               </div>
             </div>
           </div>
@@ -60,7 +77,7 @@
               <p>Saison 1</p>
               <div class="button_saison">
                 <p>Saison 1</p>
-                <img src="./assets/Group_7.svg" alt="" />
+                <img src="../assets/Group_7.svg" alt="" />
                 <div class="all_saison">
                   <p>Saison 1</p>
                   <p>Saison 2</p>
@@ -75,7 +92,7 @@
             <div class="episode">
               <div class="number_episode"><p>1</p></div>
               <div class="image_episode">
-                <img src="./assets/serie.jpg" alt="" />
+                <img src="../assets/serie.jpg" alt="" />
               </div>
               <div class="desciption_episode">
                 <p class="title">uia quibusdam exercitationem Lorem</p>
@@ -92,7 +109,7 @@
             <div class="episode">
               <div class="number_episode"><p>1</p></div>
               <div class="image_episode">
-                <img src="./assets/serie.jpg" alt="" />
+                <img src="../assets/serie.jpg" alt="" />
               </div>
               <div class="desciption_episode">
                 <p class="title">uia quibusdam exercitationem Lorem</p>
@@ -109,7 +126,7 @@
             <div class="episode">
               <div class="number_episode"><p>1</p></div>
               <div class="image_episode">
-                <img src="./assets/serie.jpg" alt="" />
+                <img src="../assets/serie.jpg" alt="" />
               </div>
               <div class="desciption_episode">
                 <p class="title">uia quibusdam exercitationem Lorem</p>
@@ -129,15 +146,15 @@
         <div class="container_one">
           <div class="logo">Netflix</div>
           <div class="navigation">
-            <a href="./index.html">Home</a><a href="./pages/serie.html">Serie</a
-            ><a href="./pages/film.html">Movie</a>
+            <a href="../index.html">Home</a><a href="../pages/serie.html">Serie</a
+            ><a href="../pages/film.html">Movie</a>
           </div>
         </div>
         <div class="container_two">
           <div class="recherche">
             <form action="">
               <button type="submit">
-                <img src="./assets/search.svg" alt="" id="logo_recherche" />
+                <img src="../assets/search.svg" alt="" id="logo_recherche" />
               </button>
               <input
                 type="text"
@@ -149,7 +166,7 @@
           </div>
           <div class="profil">
             <div class="img">
-              <img src="./assets/girl_signa.png" alt="" />
+              <img src="../assets/girl_signa.png" alt="" />
             </div>
 
             <div class="name_profil">
@@ -157,22 +174,27 @@
               <p>Kerkeni</p>
             </div>
             <div class="fleche">
-              <img src="./assets/Group_7.svg" alt="" />
+              <img src="../assets/Group_7.svg" alt="" />
             </div>
             <div class="popup_profil"></div>
           </div>
         </div>
       </div>
       <!-- <div class="avant">
-        <div class="avant_first"><img src="./assets/serie.jpg" alt="" /></div>
-        <div class="avant_second"><img src="./assets/serie.jpg" alt="" /></div>
+        <div class="avant_first"><img src="../assets/serie.jpg" alt="" /></div>
+        <div class="avant_second"><img src="../assets/serie.jpg" alt="" /></div>
       </div> -->
       <div class="container_catego_button">
-        <div id="back"><img src="./assets/left.svg" alt="" /></div>
-        <div id="next"><img src="./assets/right.svg" alt="" /></div>
+        <div id="back"><img src="../assets/left.svg" alt="" /></div>
+        <div id="next"><img src="../assets/right.svg" alt="" /></div>
 
         <div class="categories">
-          <div class="categorie"><p>Action</p></div>
+          <?php
+          // Boucle pour afficher toutes les catégories
+          while ($categorie = $requete_all_categories->fetch(PDO::FETCH_ASSOC)) {
+            echo "<div class='categorie'><p>{$categorie['name']}</p></div>";
+          }
+          ?>
 
           <!-- Autres éléments .categorie -->
         </div>
@@ -181,19 +203,19 @@
         <p>Trending in animation</p>
       </div>
       <div class="container_series">
-        <div class="back_serie"><img src="./assets/left.svg" alt="" /></div>
-        <div class="next_serie"><img src="./assets/right.svg" alt="" /></div>
+        <div class="back_serie"><img src="../assets/left.svg" alt="" /></div>
+        <div class="next_serie"><img src="../assets/right.svg" alt="" /></div>
         <div class="series">
           <div class="content_img">
             <img src="../assets/serie.jpg" alt="" class="img_hover" />
             <div class="content">
               <div class="container_three">
-                <img src="./assets/play.svg" alt="" />
-                <img src="./assets/thumbs-up.svg" alt="" />
-                <img src="./assets/circle-plus.svg" alt="" />
+                <img src="../assets/play.svg" alt="" />
+                <img src="../assets/thumbs-up.svg" alt="" />
+                <img src="../assets/circle-plus.svg" alt="" />
               </div>
               <button class="open_popup">
-                <img src="./assets/chevron-down.svg" alt="" />
+                <img src="../assets/chevron-down.svg" alt="" />
               </button>
             </div>
           </div>
