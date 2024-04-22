@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : dim. 21 avr. 2024 à 20:00
+-- Généré le : lun. 22 avr. 2024 à 21:56
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.0.1
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `netflix`
+-- Base de données : `netfkix`
 --
 
 -- --------------------------------------------------------
@@ -107,6 +107,26 @@ INSERT INTO `series` (`seriesID`, `title`, `description`, `categoryID`, `cover_i
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `subscriptions`
+--
+
+CREATE TABLE `subscriptions` (
+  `subscriptionID` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `subscriptions`
+--
+
+INSERT INTO `subscriptions` (`subscriptionID`, `name`) VALUES
+(1, '2 Jours'),
+(2, '3 Jours'),
+(3, '5 Jours');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `users`
 --
 
@@ -114,20 +134,21 @@ CREATE TABLE `users` (
   `userID` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `subscriptionID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`userID`, `username`, `email`, `password`) VALUES
-(2, 'sdsd', 'faresadmiin@gmail.com', 'faressds'),
-(3, 'fares', 'faressssssadmiin@gmail.com', 'f29fda580bc914dca191b2098300d2dd'),
-(23, 'faress', 'test@gmail.com', 'fares'),
-(60, 'qsdqsd', 'faresadmiihhhhn@gmail.com', 'a'),
-(61, 'test1', 'test1@gmail.com', 'fares'),
-(62, 'test2', 'test2@gmail.com', '$2y$10$8ombH8CCp6RTE4AkFQ.2AeUqch4y0vSuQ6/JskFrCT9iGozcYqaBu');
+INSERT INTO `users` (`userID`, `username`, `email`, `password`, `subscriptionID`) VALUES
+(2, 'sdsd', 'faresadmiin@gmail.com', 'faressds', NULL),
+(3, 'fares', 'faressssssadmiin@gmail.com', 'f29fda580bc914dca191b2098300d2dd', NULL),
+(23, 'faress', 'test@gmail.com', 'fares', NULL),
+(60, 'qsdqsd', 'faresadmiihhhhn@gmail.com', 'a', NULL),
+(61, 'test1', 'test1@gmail.com', 'fares', NULL),
+(62, 'test2', 'test2@gmail.com', '$2y$10$8ombH8CCp6RTE4AkFQ.2AeUqch4y0vSuQ6/JskFrCT9iGozcYqaBu', NULL);
 
 --
 -- Index pour les tables déchargées
@@ -155,12 +176,19 @@ ALTER TABLE `series`
   ADD KEY `categoryID` (`categoryID`);
 
 --
+-- Index pour la table `subscriptions`
+--
+ALTER TABLE `subscriptions`
+  ADD PRIMARY KEY (`subscriptionID`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userID`),
   ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `users_ibfk_2` (`subscriptionID`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -185,6 +213,12 @@ ALTER TABLE `series`
   MODIFY `seriesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT pour la table `subscriptions`
+--
+ALTER TABLE `subscriptions`
+  MODIFY `subscriptionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
@@ -205,6 +239,12 @@ ALTER TABLE `movies`
 --
 ALTER TABLE `series`
   ADD CONSTRAINT `series_ibfk_1` FOREIGN KEY (`categoryID`) REFERENCES `categories` (`categoryID`);
+
+--
+-- Contraintes pour la table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`subscriptionID`) REFERENCES `subscriptions` (`subscriptionID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
