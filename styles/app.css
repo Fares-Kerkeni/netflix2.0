@@ -299,7 +299,7 @@ input:focus {
 .nav .profil {
   display: flex;
   align-items: center;
-
+  color: black !important;
   position: relative;
 }
 .nav .profil .popup_profil {
@@ -307,19 +307,28 @@ input:focus {
   position: absolute;
   top: 55px;
   right: 0;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   width: 200px;
   height: 300px;
   border-radius: 15px;
   z-index: 100;
+  color: black !important;
+  flex-direction: column;
 }
 .profil:hover .popup_profil {
   display: flex;
+  color: black !important;
+  padding: 10px;
   flex-direction: column;
-  justify-content: center;
+}
+.checkbox {
+  display: flex;
   align-items: center;
 }
 
+.checkbox input[type="checkbox"] {
+  margin-right: 10px; /* Ajustez l'espace entre le checkbox et le texte selon vos besoins */
+}
 .profil .img {
   width: 53px;
   height: 53px;
