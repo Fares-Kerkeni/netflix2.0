@@ -63,6 +63,7 @@ $series = $bdd->query("SELECT * FROM series")->fetchAll(PDO::FETCH_ASSOC);
     <!-- Add your stylesheets and scripts here -->
 </head>
 <body>
+  <a href="./index.php">home</a>
     <h1>Admin Panel</h1>
 
     <h2>Ajouter un film ou une série</h2>
