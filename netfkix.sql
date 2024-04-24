@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : mar. 23 avr. 2024 à 23:29
--- Version du serveur : 5.7.24
--- Version de PHP : 8.0.1
+-- Hôte : localhost:8889
+-- Généré le : mer. 24 avr. 2024 à 13:50
+-- Version du serveur : 5.7.34
+-- Version de PHP : 7.4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -170,20 +170,21 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `subscriptionID` int(11) DEFAULT NULL,
-  `subscription_date` date DEFAULT NULL
+  `subscription_date` date DEFAULT NULL,
+  `role` enum('user','admin') NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`userID`, `username`, `email`, `password`, `subscriptionID`, `subscription_date`) VALUES
-(2, 'sdsd', 'faresadmiin@gmail.com', 'faressds', NULL, NULL),
-(3, 'fares', 'faressssssadmiin@gmail.com', 'f29fda580bc914dca191b2098300d2dd', NULL, NULL),
-(23, 'faress', 'test@gmail.com', 'fares', NULL, NULL),
-(60, 'qsdqsd', 'faresadmiihhhhn@gmail.com', 'a', NULL, NULL),
-(61, 'test1', 'test1@gmail.com', 'fares', 4, '2024-04-17'),
-(62, 'test2', 'test2@gmail.com', '$2y$10$8ombH8CCp6RTE4AkFQ.2AeUqch4y0vSuQ6/JskFrCT9iGozcYqaBu', 4, '2024-04-23');
+INSERT INTO `users` (`userID`, `username`, `email`, `password`, `subscriptionID`, `subscription_date`, `role`) VALUES
+(2, 'sdsd', 'faresadmiin@gmail.com', 'faressds', NULL, NULL, 'user'),
+(3, 'fares', 'faressssssadmiin@gmail.com', 'f29fda580bc914dca191b2098300d2dd', NULL, NULL, 'user'),
+(23, 'faress', 'test@gmail.com', 'fares', NULL, NULL, 'user'),
+(60, 'qsdqsd', 'faresadmiihhhhn@gmail.com', 'a', NULL, NULL, 'user'),
+(61, 'test1', 'test1@gmail.com', 'fares', 4, '2024-04-17', 'user'),
+(62, 'test2', 'test2@gmail.com', '$2y$10$8ombH8CCp6RTE4AkFQ.2AeUqch4y0vSuQ6/JskFrCT9iGozcYqaBu', 4, '2024-04-23', 'admin');
 
 --
 -- Index pour les tables déchargées
@@ -255,7 +256,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `movieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `movieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `movie_ratings`

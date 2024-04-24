@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $password = htmlspecialchars($_POST['password']);
 
     // Récupérer le mot de passe haché de l'utilisateur depuis la base de données
-    $requete = $bdd->prepare("SELECT userID, email, password FROM users WHERE email = :email");
+    $requete = $bdd->prepare("SELECT userID, email, password,role FROM users WHERE email = :email");
     $requete->execute(array('email' => $email));
     $user = $requete->fetch(PDO::FETCH_ASSOC);
     
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
         // Connexion réussie
         // Vous pouvez stocker des informations sur l'utilisateur dans la session si nécessaire
         $_SESSION['user_id'] = $user['userID'];
-
+        $_SESSION['role'] = $user['role'];
         $_SESSION['user_email'] = $user['email'];
         $userID = $_SESSION['user_id'];
         // Redirection vers une page d'accueil ou autre page

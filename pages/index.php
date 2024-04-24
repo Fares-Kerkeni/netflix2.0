@@ -170,7 +170,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container_one">
             <div class="logo">Netflix</div>
             
+            
         </div>
+       <?php
+    
+    if($_SESSION['role'] === 'admin'){
+        echo '<a href="admin.php" class="admin-link">Admin</a>';
+    }
+    ?>
+        
+        
+        
         <div class="container_two">
             
             <div class="profil">
